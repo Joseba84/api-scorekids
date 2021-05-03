@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "npx mocha test/acceptance",
+    "test": "npx mocha test/acceptance && npm run test",
     "dev": "nodemon index.js",
     "db-prepare-test": "NODE_ENV=test npx sequelize-cli db:migrate && NODE_ENV=test npx sequelize-cli db:seed"
   },
