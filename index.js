@@ -3,7 +3,6 @@ const cors = require("cors");
 const app = express();
 const PORT = 3000;
 const { kids, images } = require("./src/queries");
-
 const createKidsHandler = require("./src/kids/CreateKidsHandler");
 
 app.use(cors());
@@ -14,7 +13,7 @@ app.use(
 	})
 );
 
-new createKidsHandler(app, kids);
+createKidsHandler(app, kids);
 
 app.get("/characters-images", images.getImages);
 
