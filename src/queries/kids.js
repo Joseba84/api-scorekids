@@ -1,4 +1,5 @@
 const db = require("../../models");
+const kidValidation = require("../../src/kids/validations/KidValidation");
 
 const getHome = (req, res) => {
 	res.status(200).json({ msg: "Welcome to score kids API"});
@@ -17,6 +18,13 @@ const getKids = (req, res) => {
 
 const getKidById = (req, res) => {
 	const id = parseInt(req.params.id);
+
+	const validation = kidValidation(req.params);
+	if (validation.error) {
+		return res.status(422).json({
+			errors: validation.error.details[0].message
+		});
+	}
 
 	return db.Kid.findByPk(id)
 		.then((kid) => res.send(kid))
