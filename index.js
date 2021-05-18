@@ -27,5 +27,4 @@ const server = app.listen(PORT, () => {
 	console.log("App listening on port %s, in environment %s!", PORT, process.env.NODE_ENV);
 });
 
-
 module.exports = server;
