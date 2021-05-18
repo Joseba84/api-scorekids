@@ -1,0 +1,17 @@
+version: '3'
+services:
+  app:
+    working_dir: /api/
+    image: api-server:latest
+    build: .
+    container_name: api-server
+    volumes:
+      - ${PWD}/config:/api/config
+      - ${PWD}/models:/api/models
+      - ${PWD}/src:/api/src
+      - ${PWD}/test:/api/test
+    environment:
+      - NODE_ENV=test
+    ports:
+      - "3000:3000"
+    command: sh -c "npx nodemon index.js"
